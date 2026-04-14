@@ -44,9 +44,11 @@
 		9C8FA26C2AB058310049C0D1 /* WelcomeWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8FA26A2AB058310049C0D1 /* WelcomeWindow.swift */; };
 		9C9C78032A62AEE800778CAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C9C78022A62AEE800778CAE /* Assets.xcassets */; };
 		9CA026512AC9647E0068CC74 /* BrightnessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA026502AC9647E0068CC74 /* BrightnessManager.swift */; };
-		9CA026532AC968430068CC74 /* BrightnessTechnique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA026522AC968430068CC74 /* BrightnessTechnique.swift */; };
-		9CA026542AC968430068CC74 /* BrightnessTechnique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA026522AC968430068CC74 /* BrightnessTechnique.swift */; };
 		9CA026552AC96B260068CC74 /* BrightnessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA026502AC9647E0068CC74 /* BrightnessManager.swift */; };
+		AA00000000000000000000A3 /* BrightnessRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000A2 /* BrightnessRouting.swift */; };
+		AA00000000000000000000A4 /* BrightnessRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000A2 /* BrightnessRouting.swift */; };
+		AA00000000000000000000A6 /* UnifiedBrightnessSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000A5 /* UnifiedBrightnessSlider.swift */; };
+		AA00000000000000000000A7 /* UnifiedBrightnessSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00000000000000000000A5 /* UnifiedBrightnessSlider.swift */; };
 		9CA8FECD2E0707CA00D8525A /* Authorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA8FECC2E0707B800D8525A /* Authorizer.swift */; };
 		9CA8FECE2E0707CA00D8525A /* Authorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA8FECC2E0707B800D8525A /* Authorizer.swift */; };
 		9CCAC9372C3AF53B00B105D1 /* EntitlementHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CCAC9362C3AF53B00B105D1 /* EntitlementHandler.swift */; };
@@ -148,7 +150,8 @@
 		9C8FA26A2AB058310049C0D1 /* WelcomeWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeWindow.swift; sourceTree = "<group>"; };
 		9C9C78022A62AEE800778CAE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9CA026502AC9647E0068CC74 /* BrightnessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrightnessManager.swift; sourceTree = "<group>"; };
-		9CA026522AC968430068CC74 /* BrightnessTechnique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrightnessTechnique.swift; sourceTree = "<group>"; };
+		AA00000000000000000000A2 /* BrightnessRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrightnessRouting.swift; sourceTree = "<group>"; };
+		AA00000000000000000000A5 /* UnifiedBrightnessSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedBrightnessSlider.swift; sourceTree = "<group>"; };
 		9CA8FECC2E0707B800D8525A /* Authorizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authorizer.swift; sourceTree = "<group>"; };
 		9CCAC9332C3A8F9E00B105D1 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		9CCAC9362C3AF53B00B105D1 /* EntitlementHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntitlementHandler.swift; sourceTree = "<group>"; };
@@ -190,6 +193,7 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		9C881F092F3F30BF0056FAEF /* Shared */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (9CEA0E622F408B2800284E1A /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Shared; sourceTree = "<group>"; };
 		9CEA0E3A2F40857D00284E1A /* Widgets */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (9CEA0E472F40857E00284E1A /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Widgets; sourceTree = "<group>"; };
+		AA00000000000000000000A1 /* HDRCore */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = HDRCore; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +246,7 @@
 				9C1C8BE62C8B3EA300754474 /* UserStatusModifier.swift */,
 				9C711B4D2BD9583F00231067 /* StyledSlider.swift */,
 				9CE3C3802C8C8D3B00E7FDBA /* Styles.swift */,
+				AA00000000000000000000A5 /* UnifiedBrightnessSlider.swift */,
 				9C8FA26A2AB058310049C0D1 /* WelcomeWindow.swift */,
 			);
 			path = UI;
@@ -254,6 +259,7 @@
 				9C881F092F3F30BF0056FAEF /* Shared */,
 				C1DF94572A5EF66200FA285F /* README.md */,
 				C1DF94472A5EF20000FA285F /* BrightIntosh */,
+				AA00000000000000000000A1 /* HDRCore */,
 				9CEA0E3A2F40857D00284E1A /* Widgets */,
 				C1DF94462A5EF20000FA285F /* Products */,
 				9C4163752ABD8FA4005B34B6 /* Frameworks */,
@@ -283,7 +289,7 @@
 				9CEB41EF2A923723005D7A0D /* BrightIntosh_SE.entitlements */,
 				9CEB41EE2A9236D7005D7A0D /* BrightIntosh.entitlements */,
 				9CA026502AC9647E0068CC74 /* BrightnessManager.swift */,
-				9CA026522AC968430068CC74 /* BrightnessTechnique.swift */,
+				AA00000000000000000000A2 /* BrightnessRouting.swift */,
 				9C4163782ABD8FBD005B34B6 /* Constants.swift */,
 				9CCAC9362C3AF53B00B105D1 /* EntitlementHandler.swift */,
 				9CCAC9332C3A8F9E00B105D1 /* Localizable.xcstrings */,
@@ -318,6 +324,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				9C881F092F3F30BF0056FAEF /* Shared */,
+				AA00000000000000000000A1 /* HDRCore */,
 			);
 			name = "BrightIntosh (Store Editon)";
 			packageProductDependencies = (
@@ -366,6 +373,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				9C881F092F3F30BF0056FAEF /* Shared */,
+				AA00000000000000000000A1 /* HDRCore */,
 			);
 			name = BrightIntosh;
 			packageProductDependencies = (
@@ -483,7 +491,8 @@
 				9CCAC9372C3AF53B00B105D1 /* EntitlementHandler.swift in Sources */,
 				9C534ACC2ACB2A050029E050 /* Alerts.swift in Sources */,
 				9CA8FECD2E0707CA00D8525A /* Authorizer.swift in Sources */,
-				9CA026542AC968430068CC74 /* BrightnessTechnique.swift in Sources */,
+				AA00000000000000000000A4 /* BrightnessRouting.swift in Sources */,
+				AA00000000000000000000A7 /* UnifiedBrightnessSlider.swift in Sources */,
 				9C41637A2ABD8FBD005B34B6 /* Constants.swift in Sources */,
 				9C534AC62ACB02C60029E050 /* BatteryHelpers.swift in Sources */,
 				9C1C8BEE2C8B817B00754474 /* BrightIntoshStore.swift in Sources */,
@@ -509,7 +518,8 @@
 				9C1C8BEA2C8B4FC000754474 /* Trial.swift in Sources */,
 				9CDE33C52B4317D70085F786 /* Utils.swift in Sources */,
 				9CA026512AC9647E0068CC74 /* BrightnessManager.swift in Sources */,
-				9CA026532AC968430068CC74 /* BrightnessTechnique.swift in Sources */,
+				AA00000000000000000000A3 /* BrightnessRouting.swift in Sources */,
+				AA00000000000000000000A6 /* UnifiedBrightnessSlider.swift in Sources */,
 				C1B5215A2A5EFFDB00E9B7AC /* AppDelegate.swift in Sources */,
 				9C5610502ABF55A90066D6C9 /* BrightIntoshSettings.swift in Sources */,
 				9C1C8BED2C8B817B00754474 /* BrightIntoshStore.swift in Sources */,

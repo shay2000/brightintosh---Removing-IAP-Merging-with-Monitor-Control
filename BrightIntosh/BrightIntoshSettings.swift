@@ -126,7 +126,17 @@ class BrightIntoshSettings {
             callListeners(setting: "launchAtLogin")
         }
     }
-    
+
+    /// One-shot flag: set to `true` after the user has acknowledged the XDR
+    /// warning the first time they push the unified brightness slider above
+    /// 100%. Once set, the warning is never shown again.
+    public var xdrWarningAcknowledged: Bool = BrightIntoshSettings.getUserDefault(key: "xdrWarningAcknowledged", defaultValue: false) {
+        didSet {
+            BrightIntoshSettings.defaults.setValue(xdrWarningAcknowledged, forKey: "xdrWarningAcknowledged")
+            callListeners(setting: "xdrWarningAcknowledged")
+        }
+    }
+
     private var listeners: [String: [()->()]] = [:]
     
     var activeObserver: NSKeyValueObservation?

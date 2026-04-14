@@ -25,13 +25,17 @@ class BrightIntoshAppDelegate: NSObject {
     
     @objc func increaseBrightness() {
         Task { @MainActor in
-            BrightIntoshSettings.shared.brightness = min(getDeviceMaxBrightness(), BrightIntoshSettings.shared.brightness + 0.05)
+            let next = min(getDeviceMaxBrightness(),
+                           currentUnifiedBrightness() + 0.05)
+            applyUnifiedBrightness(next, source: .shortcut)
         }
     }
-    
+
     @objc func decreaseBrightness() {
         Task { @MainActor in
-            BrightIntoshSettings.shared.brightness = max(1.0, BrightIntoshSettings.shared.brightness - 0.05)
+            let next = max(0.0,
+                           currentUnifiedBrightness() - 0.05)
+            applyUnifiedBrightness(next, source: .shortcut)
         }
     }
     

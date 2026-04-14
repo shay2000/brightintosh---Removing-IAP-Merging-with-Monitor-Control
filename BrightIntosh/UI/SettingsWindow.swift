@@ -21,9 +21,11 @@ class BasicSettingsViewModel: ObservableObject {
         get { return brightIntoshActive }
     }
     private var brightness = BrightIntoshSettings.shared.brightness
+    /// Unified slider value in `[0.0, deviceMax]`. Below 1.0 drives the
+    /// system backlight; at or above 1.0 drives XDR.
     var brightnessSlider: Float {
-        set { BrightIntoshSettings.shared.brightness = newValue }
-        get { return brightness }
+        set { applyUnifiedBrightness(newValue, source: .settings) }
+        get { return currentUnifiedBrightness() }
     }
     private var batteryAutomation = BrightIntoshSettings.shared.batteryAutomation
     var batteryAutomationToggle: Bool {
@@ -152,11 +154,11 @@ struct BasicSettings: View {
             Form() {
                 Section(header: Text("Brightness").bold()) {
                     Toggle("Increased brightness", isOn: $viewModel.brightIntoshActiveToggle)
-                    Slider(value: $viewModel.brightnessSlider, in: 1.0...getDeviceMaxBrightness()) {
+                    Slider(value: $viewModel.brightnessSlider, in: 0.0...getDeviceMaxBrightness()) {
                         Text("Brightness")
                     }
                     Label(
-                        "You can still use your brightness keys to control the brightness. This slider controls how much the brightness range is shifted up.",
+                        "Below 100% this slider controls your Mac's normal display brightness. Above 100% it activates XDR extended brightness.",
                         systemImage: "info.circle"
                     ).foregroundColor(Color.blue)
                     if isDeviceSupported() {

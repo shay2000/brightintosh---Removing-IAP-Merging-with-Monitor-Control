@@ -82,12 +82,9 @@ func isDeviceSupported() -> Bool {
 }
 
 func getDeviceMaxBrightness() -> Float {
-    if let device = getModelIdentifier(),
-        sdr600nitsDevices.contains(device)
-    {
-        return 1.535
-    }
-    return 1.59
+    // Delegate to the HDRCore module so both call sites share one source
+    // of truth for the device max multiplier.
+    return hdrGetDeviceMaxBrightness()
 }
 
 func getStoreKitErrorMessage(_ error: StoreKitError) -> String {

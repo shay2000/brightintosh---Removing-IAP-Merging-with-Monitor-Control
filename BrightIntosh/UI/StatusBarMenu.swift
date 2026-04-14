@@ -151,12 +151,12 @@ class StatusBarMenu : NSObject, NSMenuDelegate {
         let sliderContainerView = NSView(frame: NSRect(x: 0, y: 0, width: minWidth, height: containerHeight))
         self.sliderContainerViewRef = sliderContainerView
 
-        let brightnessSlider = if #available(macOS 26.0, *) {
-            NSSlider(value: Double(BrightIntoshSettings.shared.brightness), minValue: 1.0, maxValue: Double(getDeviceMaxBrightness()), target: self, action: #selector(brightnessSliderMoved))
-        } else {
-            StyledSlider(value: Double(BrightIntoshSettings.shared.brightness), minValue: 1.0, maxValue: Double(getDeviceMaxBrightness()), target: self, action: #selector(brightnessSliderMoved))
-        }
-        brightnessSlider.target = self
+        // Unified slider covering both SDR (0–100%) and XDR (100%–deviceMax)
+        // ranges. Initial value reflects the app's current brightness state.
+        let initialValue = Double(currentUnifiedBrightness())
+        let brightnessSlider = UnifiedBrightnessSlider(value: initialValue,
+                                                       target: self,
+                                                       action: #selector(brightnessSliderMoved))
         sliderContainerView.addSubview(brightnessSlider)
 
         let brightnessValueDisplay = NSTextField(string: "100%")
@@ -187,7 +187,9 @@ class StatusBarMenu : NSObject, NSMenuDelegate {
         var valueX = 0.0
         if let brightnessValueDisplay = container.subviews.first(where: { $0 is NSTextField }) as? NSTextField {
             let valueFont = brightnessValueDisplay.font ?? NSFont.systemFont(ofSize: NSFont.systemFontSize)
-            let maxValueString = "100%" as NSString
+            // Reserve room for the widest value string the unified slider
+            // can display (up to ~159%).
+            let maxValueString = "159%" as NSString
             let valueAttributes: [NSAttributedString.Key: Any] = [.font: valueFont]
             let valueSize = maxValueString.size(withAttributes: valueAttributes)
             let valueWidth = ceil(valueSize.width) + 5.0
@@ -226,9 +228,9 @@ class StatusBarMenu : NSObject, NSMenuDelegate {
             menu.removeItem(toggleTimerItem!)
         }
         
-        brightnessSlider.floatValue = BrightIntoshSettings.shared.brightness
-        brightnessValueDisplay.stringValue = "\(Int(round(brightnessSlider.getNormalizedSliderValue() * 100.0)))%"
-        
+        brightnessSlider.floatValue = currentUnifiedBrightness()
+        brightnessValueDisplay.stringValue = "\(Int(round(brightnessSlider.floatValue * 100.0)))%"
+
         self.trialExpiredItem.isHidden = Authorizer.shared.isAllowed()
     }
     
@@ -253,7 +255,13 @@ class StatusBarMenu : NSObject, NSMenuDelegate {
     }
     
     @objc func brightnessSliderMoved(slider: NSSlider) {
-        BrightIntoshSettings.shared.brightness = slider.floatValue
+        let result = applyUnifiedBrightness(slider.floatValue, source: .menuBar)
+        if result == .cancelled {
+            // User dismissed the XDR warning — snap the slider back to 100%.
+            slider.floatValue = 1.0
+        }
+        // Keep the value display text in sync during continuous dragging.
+        brightnessValueDisplay.stringValue = "\(Int(round(slider.floatValue * 100.0)))%"
     }
     
     @objc func openSettings() {

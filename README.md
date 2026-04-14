@@ -9,6 +9,34 @@
   </a>
 </p>
 
+> [!WARNING]
+> **This is a modified, unofficial fork of BrightIntosh.**
+>
+> This branch (`claude/merge-xdr-controls-X8e3Y`) contains experimental
+> changes that **merge MonitorControl-style system brightness control with
+> BrightIntosh's XDR gamma boost into a single unified slider**. Below
+> 100% the slider drives the macOS internal-display backlight via a
+> private CoreDisplay API; at or above 100% it drives the XDR gamma
+> boost. A one-time warning is shown the first time you cross into the
+> XDR zone.
+>
+> This code is **not affiliated with or endorsed by the upstream
+> BrightIntosh project or its authors**, has **not been reviewed or
+> released by them**, and is **not the version distributed on the Mac
+> App Store**. Use at your own risk. The official, supported app
+> remains the upstream release linked above.
+>
+> Notable deviations from upstream:
+> - Unified slider spanning system brightness (0–100%) and XDR (100%+).
+> - First-use XDR warning gated by `xdrWarningAcknowledged`.
+> - Sub-100% control uses the private `CoreDisplay_Display_SetUserBrightness`
+>   symbol (dlopen'd at runtime); may break on future macOS versions.
+> - External non-Apple display brightness below 100% is **not**
+>   implemented (DDC/i2c is a deferred follow-up).
+> - The legacy `BrightnessTechnique.swift` has been removed in favour
+>   of the extracted `HDRCore` module.
+> - IAP / Store Edition gating is **untouched** in this branch.
+
 # BrightIntosh
 
 BrightIntosh enables your MacBook Pro M1 (or newer) to use the increased brightness (1000 nits) of its XDR display at any time. By default, this is only possible when displaying HDR content.

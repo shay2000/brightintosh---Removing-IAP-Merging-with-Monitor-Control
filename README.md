@@ -11,6 +11,8 @@
 
 # BrightIntosh
 
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-FFDD00?logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/shay2k)
+
 BrightIntosh enables your MacBook Pro M1 (or newer) to use the increased brightness (1000 nits) of its XDR display at any time. By default, this is only possible when displaying HDR content.
 BrightIntosh can shift your brightness range to higher values.
 The brightness slider in the app controls how much you shift this range.
@@ -41,3 +43,13 @@ If you have any ideas, enhancements or proposals, feel free to open an issue!
 
 - BrightIntosh and [f.lux](https://justgetflux.com) will likely not work simultaneously
 - HDR Videos will clip when BrightIntosh is active
+
+## Support BrightIntosh
+
+If this project is useful to you, you can support its maintenance with a coffee:
+
+<p align="center">
+  <a href="https://buymeacoffee.com/shay2k">
+    <img src="https://img.shields.io/badge/Buy%20Me%20a%20Coffee-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=black" alt="Buy Me a Coffee"/>
+  </a>
+</p>
